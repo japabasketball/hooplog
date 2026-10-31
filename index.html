@@ -44,6 +44,8 @@
   (function(){
     var s = document.getElementById("splash");
     if (!s) return;
+    var standalone = window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone === true;
+    if (standalone) { if (s.parentNode) s.parentNode.removeChild(s); return; }
     var MIN = 1300; var start = Date.now();
     function go(){
       var wait = Math.max(0, MIN - (Date.now() - start));
